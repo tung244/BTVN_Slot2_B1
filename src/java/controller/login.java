@@ -56,6 +56,9 @@ public class login extends HttpServlet {
         else if(username.equalsIgnoreCase(adUser) && !pass.equals(adPass)){
             request.getRequestDispatcher("forgetpass.html").forward(request, response);
         }
+        else if(!username.equalsIgnoreCase(customUser) || pass.equals(customPass)){
+            ms+="Tài khoản hoặc mật khẩu không chính xác";
+        }    
         else{
             request.getRequestDispatcher("home.html").forward(request, response);
         }
