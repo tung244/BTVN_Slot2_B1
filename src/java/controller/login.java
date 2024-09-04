@@ -46,23 +46,26 @@ public class login extends HttpServlet {
         String customPass = "321";
         String ms = "";
         PrintWriter out = response.getWriter();
-        if(username.isBlank()||email.isBlank()||pass.isBlank()){
-             ms+="Yêu cầu điền thông tin";
-         }
-//        else if(!pass.equals(confirm)){
-//            ms+= "Pass and confirm must be the same value";
-//        }
-        
-        else if(username.equalsIgnoreCase(adUser) && !pass.equals(adPass)){
-            request.getRequestDispatcher("forgetpass.html").forward(request, response);
-        }
-        else if(!username.equalsIgnoreCase(customUser) || !pass.equals(customPass)){
-            ms+="Tài khoản hoặc mật khẩu không chính xác";
-        }    
-        else{
+        if (username.isBlank() || email.isBlank() || pass.isBlank()) {
+            ms += "Yêu cầu điền thông tin.";
+        } else if (username.equalsIgnoreCase(adUser) && pass.equals(adPass)) {
+            // Nếu tài khoản admin đúng
             request.getRequestDispatcher("home.html").forward(request, response);
+        } else if (username.equalsIgnoreCase(adUser) && !pass.equals(adPass)) {
+            // Nếu tài khoản admin đúng nhưng mật khẩu sai
+            request.getRequestDispatcher("forgetpass.html").forward(request, response);
+        } else if (username.equalsIgnoreCase(customUser) && pass.equals(customPass)) {
+            // Nếu tài khoản và mật khẩu của người dùng tùy chỉnh đúng
+            request.getRequestDispatcher("home.html").forward(request, response);
+        } else {
+            // Nếu tài khoản hoặc mật khẩu không chính xác
+            ms += "Tài khoản hoặc mật khẩu không chính xác.";
         }
-        out.append("<div><h1 style=\"color: red;\">"+ms+"</h1></div>");
+
+        // In ra thông báo lỗi nếu có
+        if (!ms.isEmpty()) {
+            out.append("<div><h1 style=\"color: red;\">" + ms + "</h1></div>");
+        }
     }
 
     @Override
