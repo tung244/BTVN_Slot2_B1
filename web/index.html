@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #dde4f4;
+        }
+        
+        .form{
+            width: 25%;
+            background-color: #f0f7ff;
+            padding: 3%;
+            border-radius: 10px;
+        }
+        
+        .form h1{
+            text-align: center;
+            color: #006400;
+        }
+        
+        .form-group{
+            margin-bottom: 5%;
+        }
+        
+        .form-group input{
+            padding: 7px;
+            width: 97%;
+            border-radius: 10px;
+        }
+        
+        .submit input{
+            margin: 2% 0;
+            width: 100%;
+            padding: 15px;
+            font-size: 20px;
+            color: white;
+            border-radius: 10px;
+            background-color: #3e4684;
+        }
+    </style>
+</head>
+<body>
+        <div class="form">
+            <h1>LOGIN</h1>
+            <form action="login" method="post">
+                <div class="form-group">
+                    <label for="user">Username</label> <br>
+                    <input type="text" name="user">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label> <br>
+                    <input type="text" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="pw">Password</label><br>
+                    <input type="text" name="pw"> 
+                </div>
+<!--                <div class="form-group">
+                    <label for="confirm">Confirm</label><br>
+                    <input type="text" name="confirm"> 
+                </div>-->
+                <div class="submit">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+        
+</body>
+</html>
